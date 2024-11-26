@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTU CGPA Calculator</title>
+    <link rel="stylesheet" href="cgpa.css">
+</head>
+<body>
+    <header>
+        <h1>VTU CGPA Calculator</h1>
+        <p>Calculate your VTU CGPA by entering grades and credits for each subject.</p>
+        <li><a href="index.php">Home</a></li>
+    </header>
+
+    <main>
+        <div class="calculator-container">
+            <form id="cgpaForm">
+                <div class="input-group">
+                    <label for="grade1">Grade for Subject 1 (0-10):</label>
+                    <input type="number" id="grade1" placeholder="Grade (e.g., 9)" min="0" max="10" required>
+                </div>
+                <div class="input-group">
+                    <label for="credit1">Credits for Subject 1:</label>
+                    <input type="number" id="credit1" placeholder="Credits (e.g., 4)" min="1" required>
+                </div>
+
+                <div id="extra-subjects"></div>
+
+                <button type="button" class="add-subject">Add Another Subject</button>
+                <button type="button" class="calculate-btn">Calculate CGPA</button>
+            </form>
+            <div id="result" class="result"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Student Resource Hub - VTU CGPA Calculator</p>
+    </footer>
+
+    <script>
+        const addSubjectButton = document.querySelector('.add-subject');
+        const calculateButton = document.querySelector('.calculate-btn');
+        const extraSubjectsDiv = document.getElementById('extra-subjects');
+        const resultDiv = document.getElementById('result');
+        let subjectCount = 1;
+
+        addSubjectButton.addEventListener('click', () => {
+            subjectCount++;
+            const subjectHTML = `
+                <div class="input-group">
+                    <label for="grade${subjectCount}">Grade for Subject ${subjectCount} (0-10):</label>
+                    <input type="number" id="grade${subjectCount}" placeholder="Grade" min="0" max="10" required>
+                </div>
+                <div class="input-group">
+                    <label for="credit${subjectCount}">Credits for Subject ${subjectCount}:</label>
+                    <input type="number" id="credit${subjectCount}" placeholder="Credits" min="1" required>
+                </div>`;
+            extraSubjectsDiv.insertAdjacentHTML('beforeend', subjectHTML);
+        });
+
+        calculateButton.addEventListener('click', () => {
+            let totalPoints = 0;
+            let totalCredits = 0;
+
+            for (let i = 1; i <= subjectCount; i++) {
+                const grade = parseFloat(document.getElementById(`grade${i}`).value) || 0;
+                const credit = parseFloat(document.getElementById(`credit${i}`).value) || 0;
+
+                if (grade < 0 || grade > 10) {
+                    alert(`Grade for Subject ${i} must be between 0 and 10.`);
+                    return;
+                }
+                totalPoints += grade * credit;
+                totalCredits += credit;
+            }
+
+            const cgpa = totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : 0;
+            resultDiv.innerHTML = `<h3>Your VTU CGPA: ${cgpa}</h3>`;
+        });
+    </script>
+</body>
+</html>

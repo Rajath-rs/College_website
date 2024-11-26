@@ -1,0 +1,132 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #ddd;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    animation: backgroundWave 10s infinite ease-in-out;
+}
+
+/* Heading */
+h1 {
+    color: #ff9800;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Form Container */
+form {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    animation: slideIn 1s ease-out;
+}
+
+/* Form Inputs */
+label {
+    font-size: 1rem;
+    color: #bbb;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #252525;
+    color: #ddd;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.8);
+    transform: scale(1.05);
+}
+
+/* Submit Button */
+button {
+    background-color: #ff9800;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    font-size: 1.2rem;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+}
+
+button:hover {
+    background-color: #e68900;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.6);
+}
+
+/* Error Message */
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes backgroundWave {
+    0% { background-color: #121212; }
+    50% { background-color: #1e1e1e; }
+    100% { background-color: #121212; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    form {
+        padding: 25px;
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Link Styles (if any) */
+a {
+    color: #ff9800;
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #e68900;
+}

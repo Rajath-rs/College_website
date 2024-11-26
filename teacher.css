@@ -1,0 +1,195 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #ddd;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    animation: backgroundWave 10s infinite ease-in-out;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #ff9800;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.form-group:nth-child(odd) {
+    animation-delay: 0.2s;
+}
+
+.form-group:nth-child(even) {
+    animation-delay: 0.4s;
+}
+
+label {
+    color: #bbb;
+    font-size: 1rem;
+}
+
+/* Input Fields */
+input, select {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #252525;
+    color: #ddd;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input[type="file"] {
+    background-color: #444;
+}
+
+/* Button */
+button {
+    background-color: #27afd4;
+    border: none;
+    padding: 12px;
+    font-size: 1.2rem;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    animation: bounceButton 1s ease-in-out infinite;
+}
+
+button:hover {
+    background-color: #004280;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.5);
+}
+
+/* Message */
+.success-message, .error-message {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    margin-top: 20px;
+}
+
+.success-message {
+    color: green;
+}
+
+.error-message {
+    color: red;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes backgroundWave {
+    0% { background-color: #121212; }
+    50% { background-color: #1e1e1e; }
+    100% { background-color: #121212; }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceButton {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        max-width: 95%;
+    }
+}
+
+/* Focus Animation */
+input:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.8);
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect for Inputs */
+input:hover, select:hover {
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.8);
+    border-color: #ff9800;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* File Input Loading Animation */
+input[type="file"]:focus {
+    background-color: #333;
+    border-color: #ff9800;
+    animation: fileUpload 1s ease-in-out infinite;
+}
+
+@keyframes fileUpload {
+    0% { background-color: #333; }
+    50% { background-color: #444; }
+    100% { background-color: #333; }
+}
+
+/* Floating Effect for Input */
+input:focus, select:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.5);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+input:focus + label, select:focus + label {
+    transform: translateY(-20px);
+    font-size: 0.9rem;
+    color: #ff9800;
+}
+
+/* Submit Button Animation */
+button:hover {
+    animation: pulse 1s infinite;
+}

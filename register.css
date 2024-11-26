@@ -1,0 +1,142 @@
+/* General Body and Layout */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;  /* Dark background */
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    animation: backgroundWave 10s infinite ease-in-out;
+}
+
+/* Form Container */
+.form-container {
+    background-color: #1e1e1e;  /* Darker container for contrast */
+    border-radius: 10px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+    animation: slideIn 1s ease-out;
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #ff9800;  /* Bright orange color for the title */
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1rem;
+    color: #bbbbbb;  /* Light grey color for text */
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Input and Select Fields */
+input[type="text"], input[type="email"], input[type="password"], select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #252525;
+    color: #ddd;
+    font-size: 1rem;
+    transition: 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #ff9800;
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.8);
+    transform: scale(1.05);
+}
+
+/* Button Styling */
+button {
+    background-color: #ff9800;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    font-size: 1.2rem;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+}
+
+button:hover {
+    background-color: #e68900;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.6);
+}
+
+/* Error Message Styling */
+.error {
+    color: red;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes backgroundWave {
+    0% { background-color: #121212; }
+    50% { background-color: #1e1e1e; }
+    100% { background-color: #121212; }
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 30px;
+        max-width: 90%;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"], select, button {
+        font-size: 1rem;
+    }
+}
+
+/* Links (for the login link) */
+a {
+    color: #ff9800;
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #e68900;
+}

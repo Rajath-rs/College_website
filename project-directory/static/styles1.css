@@ -1,0 +1,327 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('OIP.jpg'); /* Update with your image path */
+    background-size: cover; /* Makes the image cover the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Keeps the background steady */
+}
+
+/* Header Styling */
+header {
+    background-color: rgba(74, 144, 226, 0.8); /* Semi-transparent header */
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Header Title */
+header h1 {
+    font-size: 2em;
+    margin: 0;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Navigation Styling */
+header nav {
+    margin-top: 10px;
+}
+
+header nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1em;
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect with underline */
+header nav a:hover {
+    color: #ffd700; /* Golden color on hover */
+}
+
+header nav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffd700;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+header nav a:hover::after {
+    width: 100%; /* Expands underline on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    header nav a {
+        font-size: 1em;
+        margin: 0 10px;
+    }
+}
+
+
+.chat-container {
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for the chat container */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-log {
+    border: 1px solid rgba(204, 204, 204, 0.5); /* Semi-transparent border */
+    border-radius: 5px;
+    height: 400px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: rgba(249, 249, 249, 0.8); /* Semi-transparent background for chat log */
+}
+
+.chat-log ul {
+    list-style-type: none;
+}
+
+.chat-log li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.chat-log li.user {
+    background-color: rgba(209, 231, 221, 0.8); /* Semi-transparent background for user messages */
+    text-align: right;
+}
+
+.chat-log li.ai {
+    background-color: rgba(207, 226, 255, 0.8); /* Semi-transparent background for AI messages */
+    text-align: left;
+}
+
+.input-container {
+    display: flex;
+}
+
+#user-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid rgba(204, 204, 204, 0.5); /* Semi-transparent border */
+    border-radius: 5px;
+    margin-right: 10px;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+}
+
+#user-input:focus {
+    border-color: #4A90E2;
+}
+
+#send-btn {
+    padding: 10px;
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#send-btn:hover {
+    background-color: #3A7BD5;
+}
+/* Footer Styling */
+.footer {
+    background: #2c3e50;
+    color: #f5f5f5;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Footer Content Sections */
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-section h2 {
+    color: #ecf0f1;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+/* Footer Links */
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 8px 0;
+}
+
+.footer-section ul li a {
+    color: #b8c6db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #3498db;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    background: #1a252f;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #ecf0f1;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Footer Animation */
+.footer-section h2:before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background: #3498db;
+    bottom: -10px;
+    left: 0;
+    transition: width 0.4s;
+}
+
+.footer-section h2:hover:before {
+    width: 100%;
+}
+
+.footer-section.about p {
+    font-size: 0.95em;
+    line-height: 1.6em;
+    color: #b8c6db;
+    max-width: 350px;
+    transition: transform 0.3s ease;
+}
+
+.footer-section.about p:hover {
+    transform: translateY(-5px);
+}
+
+/* Footer Link Hover Effect */
+.footer-section ul li a {
+    position: relative;
+    display: inline-block;
+}
+
+.footer-section ul li a:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #3498db;
+    bottom: -2px;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+}
+
+.footer-section ul li a:hover:after {
+    transform: scaleX(1);
+}
+
+/* Footer Bottom - Small Gradient Animation */
+.footer-bottom::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #8e44ad, #3498db);
+    top: 0;
+    left: -50%;
+    animation: gradientMove 4s linear infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        left: -50%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-section {
+        margin: 15px 0;
+    }
+}
+/* Custom Scrollbar Styles for Webkit Browsers (Chrome, Safari) */  
+::-webkit-scrollbar {  
+    width: 10px; /* Width of the scrollbar */  
+  }  
+    
+  ::-webkit-scrollbar-track {  
+    background: #1e1e1e; /* Color of the scrollbar track */  
+    border-radius: 10px;  
+  }  
+    
+  ::-webkit-scrollbar-thumb {  
+    background: #007bff; /* Color of the scrollbar handle */  
+    border-radius: 10px;  
+  }  
+    
+  ::-webkit-scrollbar-thumb:hover {  
+    background: #0056b3; /* Color of the handle on hover */  
+  }  
+    
+  /* For Firefox */  
+  * {  
+    scrollbar-width: thin; /* "auto" or "thin" */  
+    scrollbar-color: #007bff #1e1e1e; /* Handle color and track color */  
+  }

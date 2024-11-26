@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #chatbox-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+        }
+
+        #chatbox-header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            cursor: pointer;
+        }
+
+        #chat-box {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #f1f1f1;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        #chatbox-footer {
+            display: flex;
+            padding: 10px;
+        }
+
+        #user-message {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        #send-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #send-button:hover {
+            background-color: #0056b3;
+        }
+
+        #chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .user-message {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .ai-message {
+            background-color: #f1f1f1;
+            color: #333;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Chat Icon -->
+    <div id="chat-icon" onclick="toggleChat()">💬</div>
+
+    <!-- Chat Box Container -->
+    <div id="chatbox-container">
+        <div id="chatbox-header" onclick="toggleChat()">Chat with AI</div>
+        <div id="chat-box"></div>
+        <div id="chatbox-footer">
+            <input type="text" id="user-message" placeholder="Type your message..." />
+            <button id="send-button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Toggle chatbox visibility
+        function toggleChat() {
+            const chatbox = document.getElementById('chatbox-container');
+            chatbox.style.display = chatbox.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        // Send message to Flask API
+        function sendMessage() {
+            const message = document.getElementById('user-message').value;
+            if (message.trim() === '') return;
+
+            // Append user's message to chat box
+            const userMessageElement = document.createElement('div');
+            userMessageElement.classList.add('user-message');
+            userMessageElement.textContent = message;
+            document.getElementById('chat-box').appendChild(userMessageElement);
+
+            // Clear the input field
+            document.getElementById('user-message').value = '';
+
+            // Call Flask API to get AI response
+            fetch('http://localhost:5000/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ question: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.response) {
+                    // Append AI's response to the chat box
+                    const aiMessageElement = document.createElement('div');
+                    aiMessageElement.classList.add('ai-message');
+                    aiMessageElement.textContent = data.response;
+                    document.getElementById('chat-box').appendChild(aiMessageElement);
+                } else if (data.error) {
+                    // Handle errors
+                    const aiMessageElement = document.createElement('div');
+                    aiMessageElement.classList.add('ai-message');
+                    aiMessageElement.textContent = 'Error: ' + data.error;
+                    document.getElementById('chat-box').appendChild(aiMessageElement);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const aiMessageElement = document.createElement('div');
+                aiMessageElement.classList.add('ai-message');
+                aiMessageElement.textContent = 'Error: ' + error;
+                document.getElementById('chat-box').appendChild(aiMessageElement);
+            });
+        }
+    </script>
+</body>
+</html>
